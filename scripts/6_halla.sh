@@ -1,0 +1,1 @@
+halla -x ./diff_species.txt -y ./diff_pathway.txt -o ./HALLA/results 

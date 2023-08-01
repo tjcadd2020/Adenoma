@@ -1,0 +1,12 @@
+cat RunID.txt|while read line
+do
+
+time run_midas.py species ./MIDAS_out/$line -1 ./$line'_paired_1'.fastq -2./$line'_paired_2'.fastq --remove_temp
+
+time run_midas.py snps ./MIDAS_out/$line  -1 ./$line'_paired_1'.fastq -2 ./$line'_paired_2'.fastq --remove_temp
+
+time run_midas.py genes ./MIDAS_out1$line -1 ./$line'_paired_1'.fastq -2 ./$line'_paired_2'.fastq --remove_temp
+
+done
+
+merge_midas.py snps ./MIDAS_merge -i ./MIDAS_out  -t dir --all_samples --core_snps
